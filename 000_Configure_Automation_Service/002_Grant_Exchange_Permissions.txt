@@ -1,0 +1,30 @@
+# Before running the powershell below.  Open app registration, select API permissions.  
+# Select APIS my organization uses. 
+# Select Application and select the following.
+# - Exchange.ManageAsApp
+# - full_access_as_app
+# - Organization.ReadWrite.All
+#
+# Once done, complete and grant admin consent
+
+
+
+# App Name needs to match the app registration/enterprise app in entra
+
+# Make sure you get the information about this from the Enterprise App Blade, not the app registration blade. 
+# ObjectId is different
+
+$Script:AppName = ""
+$Script:AppID = ""
+$Script:AppObjectID = ""
+
+New-ServicePrincipal -DisplayName $Script:AppName -AppId $Script:AppID -ObjectId $Script:AppObjectID
+
+foreach($ExchangeRoleGroup in @("Help Desk",
+	"Compliance Management",
+	"Organization Management"))
+{
+    Add-RoleGroupMember -Identity "Organization Management" -Member $Script:AppID
+}
+
+

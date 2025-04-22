@@ -1,0 +1,8 @@
+auth to entra as global admin
+nagivate to https://entra.microsoft.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType~/null/sourceType/Microsoft_AAD_IAM
+
+create an app registration, name it "Microsoft365DSC"
+
+open the app, select API permissions.
+
+select application permissions.  Grant all permissions in the GraphScopes.txt
